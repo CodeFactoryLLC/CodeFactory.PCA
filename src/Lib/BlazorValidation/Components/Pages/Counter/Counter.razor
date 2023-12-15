@@ -1,0 +1,38 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+<CounterController CancelOnNavigationCheckAsync="@NavigationLocationChanges" @ref="Controller"/>
+
+<h1>Counter</h1>
+
+<StatusEditForm DataStatusChanged="Test">
+
+</StatusEditForm>
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+    @code {
+        private int currentCount = 0;
+
+
+    private ICounterController Controller { get; set; }
+
+    private void NavigationLocationChanges(NavigationCancelInfo context)
+    {
+        context.CancelNavigationChange = true;
+
+    }
+
+        private async void Test(bool test)
+        {
+        
+        
+        }
+    private async void IncrementCount()
+    {
+        currentCount++;
+
+        var result = await Controller.SaveCounterValueAsync(currentCount);
+    }
+}

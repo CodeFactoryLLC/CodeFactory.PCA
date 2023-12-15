@@ -13,7 +13,10 @@ using System.Security.Cryptography;
 
 namespace CodeFactory.PCA.Blazor
 {
-    public abstract class ControllerBase :IComponent,IHandleAfterRender, IAsyncDisposable
+    /// <summary>
+    /// Base class that is implemented by all component based controllers.
+    /// </summary>
+    public abstract class ControllerBase :ComponentBase, IAsyncDisposable
     {
         /// <summary>
         /// Java script function name to enable prompting for navigation changes. 
@@ -31,111 +34,120 @@ namespace CodeFactory.PCA.Blazor
         private const string DefaultPromptMessage = "Data has changed are you sure you want to leave the page?";
 
         /// <summary>
-        /// Indentifier assigned to the controller. Used for java script execution.
+        /// Identifier assigned to the controller. Used for java script execution.
         /// </summary>
         private readonly string _controllerId = Guid.NewGuid().ToString("D", CultureInfo.InvariantCulture);
 
-        private RenderHandle _renderHandle;
-
+        /// <summary>
+        /// Dispose handler for location changing
+        /// </summary>
         private IDisposable? _locationChangeSubscription;
 
-        private bool _calledOnAfterRender = false;
+        /// <summary>
+        /// Flag that tracks if the user should be prompted before a navigation event occurs.
+        /// </summary>
+        private bool _promptForNavigationChange = false;
 
-        private bool _blockNavigationChange = false;
-
-        private string _promptMessage = null;
+        /// <summary>
+        /// The prompt message that should be displayed to the user.
+        /// </summary>
+        private string _promptMessage = DefaultPromptMessage;
 
         
-
+        /// <summary>
+        /// <see cref="IJSRuntime"/> service.
+        /// </summary>
         [Inject]
-        private IJSRuntime JSRuntime { get; set; } = default!;
+        protected IJSRuntime JSRuntime { get; set; } = default!;
 
+        /// <summary>
+        /// <see cref="NavigationManager"/> service.
+        /// </summary>
         [Inject]
         protected NavigationManager NavManager { get; set; } = default!;
 
-
-        void IComponent.Attach(RenderHandle renderHandle)
-        {
-            _renderHandle = renderHandle;
-        }
-
-        Task IComponent.SetParametersAsync(ParameterView parameters)
-        {
-            parameters.SetParameterProperties(this);
-
-            return Task.CompletedTask;
-        }
-
-        async Task IHandleAfterRender.OnAfterRenderAsync()
-        {
-            var firstRender = !_calledOnAfterRender;
-
-            _calledOnAfterRender = true;
-
-            if (_locationChangeSubscription == null) 
-            { 
-                _locationChangeSubscription = NavManager.RegisterLocationChangingHandler(OnLocationChanging);
-            }
-            OnAfterRender(firstRender);
-
-            await OnAfterRenderAsync(firstRender);
-        }
+        /// <summary>
+        /// Parameter that registers a event callback that will be called by the controller to check a navigation change should be stopped.
+        /// </summary>
+        [Parameter]
+        public EventCallback<NavigationCancelInfo> CancelOnNavigationCheckAsync { get; set; }
 
         /// <summary>
         /// Handles the <see cref="NavigationManager.LocationChanged"/> event from the navigation manager.
         /// </summary>
         /// <param name="context">The context of the location that is changing.</param>
-        private ValueTask OnLocationChanging(LocationChangingContext context)
-        { 
-            if (_blockNavigationChange) context.PreventNavigation();
-
-            return ValueTask.CompletedTask;
-        
-        }
-
-        protected virtual void OnAfterRender(bool firstRender)
-        { 
-            //Intentionally blank
-        }
-
-        protected virtual Task OnAfterRenderAsync(bool firstRedner) => Task.CompletedTask;
-
-        public virtual async ValueTask DisposeAsync()
+        private async ValueTask OnLocationChanging(LocationChangingContext context)
         {
 
-            _locationChangeSubscription?.Dispose();
-
-            if(_blockNavigationChange) 
+            if (_promptForNavigationChange & CancelOnNavigationCheckAsync.HasDelegate)
             {
-                try
-                {
-                    await JSRuntime.InvokeVoidAsync(JavaScriptDisableNavigationPrompt, _controllerId);
-                }
-                catch (JSDisconnectedException)
-                {
-                    //Intentionally blank
-                }
+                var cancelInfo = new NavigationCancelInfo();
+
+                cancelInfo.PromptMessage = _promptMessage;
+
+                await CancelOnNavigationCheckAsync.InvokeAsync(cancelInfo);
+
+                if (cancelInfo.CancelNavigationChange) context.PreventNavigation();
             }
-             
         }
 
+        /// <summary>
+        /// Subscribes to navigation change events and also tells the browser to prompt before navigation change events occur.
+        /// </summary>
+        private async Task SubscribeToNotificationsAsync()
+        {
+             _locationChangeSubscription  ??= NavManager.RegisterLocationChangingHandler(OnLocationChanging);
+
+            await JSRuntime.InvokeVoidAsync(JavaScriptEnableNavigationPrompt, _controllerId);
+        }
+
+        /// <summary>
+        /// Releases  navigation change events and also tells the browser to not prompt before navigation change events occur.
+        /// </summary>
+        private async Task ReleaseNotificationsAsync()
+        {
+            _locationChangeSubscription?.Dispose();
+
+            try
+            {
+                await JSRuntime.InvokeVoidAsync(JavaScriptDisableNavigationPrompt, _controllerId);
+            }
+            catch (JSException)
+            { 
+                //Intentionally blank
+            }
+            
+        }
+
+        /// <summary>
+        /// Triggers the disposal of resource consumed by this controller.
+        /// </summary>
+        /// <returns></returns>
+        public virtual async ValueTask DisposeAsync()
+        {
+           
+            await ReleaseNotificationsAsync();
+             
+        }
 
         /// <summary>
         /// Determines if the controller should prompt before navigation changes are allowed to complete.
         /// </summary>
-        /// <param name="promptNavigationChange">Flag that determines if the navigation should be prompted before executing.</param>
+        /// <param name="promptForNavigationChange">Flag that determines if the navigation should be prompted before executing.</param>
         /// <param name="promptMessage">Optional parameter, sets the message to be displayed when prompting to leave.</param>
-        public async Task PromptForNavigationChangeAsync(bool promptNavigationChange, string promptMessage = null)
+        public async Task PromptForNavigationChangeAsync(bool promptForNavigationChange, string promptMessage = null)
         { 
-            _blockNavigationChange = promptNavigationChange;
+            _promptForNavigationChange = promptForNavigationChange;
 
-            if (_blockNavigationChange) 
+            _promptMessage = promptMessage ?? DefaultPromptMessage;
+
+            if (_promptForNavigationChange) 
             {
-                await JSRuntime.InvokeVoidAsync(JavaScriptEnableNavigationPrompt, _controllerId);
+                await SubscribeToNotificationsAsync();
             }
             else
             {
-                await JSRuntime.InvokeVoidAsync(JavaScriptDisableNavigationPrompt, _controllerId);
+                await ReleaseNotificationsAsync();
             }
         }
     }
