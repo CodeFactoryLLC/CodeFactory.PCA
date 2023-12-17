@@ -1,6 +1,8 @@
-﻿namespace BlazorValidation.Components.Pages.Counter
+﻿using CodeFactory.PCA.Blazor;
+
+namespace BlazorValidation.Components.Pages.Counter
 {
-    public interface ICounterController
+    public interface ICounterController:IController
     {
         /// <summary>
         /// Save the counter value to the database.

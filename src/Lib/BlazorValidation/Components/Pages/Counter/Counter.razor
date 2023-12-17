@@ -1,38 +1,55 @@
 ﻿@page "/counter"
 
 <PageTitle>Counter</PageTitle>
-<CounterController CancelOnNavigationCheckAsync="@NavigationLocationChanges" @ref="Controller"/>
+<CounterController CheckStopNavigationChange="@PromptToAllowNavigationChangeAsync" @ref="Controller" />
 
 <h1>Counter</h1>
 
-<StatusEditForm DataStatusChanged="Test">
-
+<StatusEditForm Model="@_info" DataModifiedStatusChanged="DataModifiedStatusChangedAsync" @ref = "CounterEditForm" >
+<InputText @bind-Value="@_info.FirstName" DisplayName="First Name"/>
+<InputText @bind-Value="@_info.LastName"  DisplayName="Last Name" />
 </StatusEditForm>
 <p role="status">Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-    @code {
-        private int currentCount = 0;
+@code {
+    private int currentCount = 0;
+
+    private InfoTest _info = new InfoTest();
 
 
     private ICounterController Controller { get; set; }
 
-    private void NavigationLocationChanges(NavigationCancelInfo context)
-    {
-        context.CancelNavigationChange = true;
 
+    private StatusEditForm CounterEditForm { get; set; }
+
+    private async Task PromptToAllowNavigationChangeAsync(NavigationCancelInfo context)
+    {
+        context.CancelNavigationChange = false;
     }
 
-        private async void Test(bool test)
-        {
-        
-        
-        }
     private async void IncrementCount()
     {
         currentCount++;
 
         var result = await Controller.SaveCounterValueAsync(currentCount);
+
+        if (result) await CounterEditForm.SetDataUnmodifiedAsync();
+    }
+
+
+    public class InfoTest
+    {
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+    }
+
+    private async Task DataModifiedStatusChangedAsync(EditFormDataStatus status)
+    {
+
+       await Controller.PromptForNavigationChangeAsync(status.IsModified);
+
     }
 }

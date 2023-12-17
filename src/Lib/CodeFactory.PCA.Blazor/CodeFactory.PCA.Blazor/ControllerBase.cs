@@ -70,7 +70,7 @@ namespace CodeFactory.PCA.Blazor
         /// Parameter that registers a event callback that will be called by the controller to check a navigation change should be stopped.
         /// </summary>
         [Parameter]
-        public EventCallback<NavigationCancelInfo> CancelOnNavigationCheckAsync { get; set; }
+        public EventCallback<NavigationCancelInfo> CheckStopNavigationChange { get; set; }
 
         /// <summary>
         /// Handles the <see cref="NavigationManager.LocationChanged"/> event from the navigation manager.
@@ -79,13 +79,13 @@ namespace CodeFactory.PCA.Blazor
         private async ValueTask OnLocationChanging(LocationChangingContext context)
         {
 
-            if (_promptForNavigationChange & CancelOnNavigationCheckAsync.HasDelegate)
+            if (_promptForNavigationChange & CheckStopNavigationChange.HasDelegate)
             {
                 var cancelInfo = new NavigationCancelInfo();
 
                 cancelInfo.PromptMessage = _promptMessage;
 
-                await CancelOnNavigationCheckAsync.InvokeAsync(cancelInfo);
+                await CheckStopNavigationChange.InvokeAsync(cancelInfo);
 
                 if (cancelInfo.CancelNavigationChange) context.PreventNavigation();
             }
