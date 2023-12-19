@@ -16,7 +16,7 @@ namespace CodeFactory.PCA.Blazor
         /// <summary>
         /// Tracks the edit context on the form. 
         /// </summary>
-        private EditContext? _currentEditContext;
+        private EditContext? _currentEditContext = null;
 
         /// <summary>
         /// Stores the list of fields that have been modified. 
@@ -38,13 +38,13 @@ namespace CodeFactory.PCA.Blazor
 
 
         /// <inheritdoc/>
-        protected override Task OnInitializedAsync()
-        {
-            base.OnInitializedAsync();
-            _currentEditContext = base.EditContext;
+        //protected override Task OnInitializedAsync()
+        //{
+        //    base.OnInitializedAsync();
+        //    _currentEditContext = base.EditContext;
 
-            return Task.CompletedTask;
-        }
+        //    return Task.CompletedTask;
+        //}
 
         /// <inheritdoc/>
         protected override async Task OnParametersSetAsync()
