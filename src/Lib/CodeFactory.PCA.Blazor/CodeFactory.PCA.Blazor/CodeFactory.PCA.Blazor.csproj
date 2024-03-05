@@ -1,10 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <OutputType>Library</OutputType>  
+    <OutputType>Library</OutputType>
+	  <IsPackable>true</IsPackable>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <Title>CodeFactory PCA Pattern for Blazor</Title>
+	  <Authors>CodeFactory, LLC.</Authors>
+	  <Description>PCA delivery pattern implemented for Blazor.</Description>
+	  <Copyright>Copyright 2023 CodeFactory, LLC.</Copyright>
+	  <PackageProjectUrl>https://github.com/CodeFactoryLLC/CodeFactory.PCA</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/CodeFactoryLLC/CodeFactory.PCA</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageTags>Delivery Patterns;Blazor</PackageTags>
+	  <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+	  <FileVersion>1.0.23353.1</FileVersion>
+	  <PackageLicenseExpression> MIT</PackageLicenseExpression>
+	  <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+	  <Version>1.23353.1-Pre</Version>  
   </PropertyGroup>
 
 
