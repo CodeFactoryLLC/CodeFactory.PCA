@@ -16,7 +16,7 @@ namespace CodeFactory.PCA.Blazor
     /// <summary>
     /// Base class that is implemented by all component based controllers.
     /// </summary>
-    public abstract class ControllerBase :ComponentBase, IAsyncDisposable
+    public abstract class ControllerComponentBase :ComponentBase, IAsyncDisposable
     {
         /// <summary>
         /// Java script function name to enable prompting for navigation changes. 
@@ -65,6 +65,9 @@ namespace CodeFactory.PCA.Blazor
         /// </summary>
         [Inject]
         protected NavigationManager NavManager { get; set; } = default!;
+
+      
+
 
         /// <summary>
         /// Parameter that registers a event callback that will be called by the controller to check a navigation change should be stopped.
@@ -127,7 +130,7 @@ namespace CodeFactory.PCA.Blazor
         {
            
             await ReleaseNotificationsAsync();
-             
+
         }
 
         /// <summary>

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFactory.PCA.Models", ".
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorValidation", "..\..\Lib\BlazorValidation\BlazorValidation.csproj", "{433DB029-F480-47AE-B012-23A271C9605C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFactory.PCA.Blazor.Tel", "..\..\Lib\CodeFactory.PCA.Blazor.Tel\CodeFactory.PCA.Blazor.Tel.csproj", "{FBC00661-9F33-4EFA-83DC-443DAF1F8199}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{433DB029-F480-47AE-B012-23A271C9605C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{433DB029-F480-47AE-B012-23A271C9605C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{433DB029-F480-47AE-B012-23A271C9605C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBC00661-9F33-4EFA-83DC-443DAF1F8199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBC00661-9F33-4EFA-83DC-443DAF1F8199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBC00661-9F33-4EFA-83DC-443DAF1F8199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBC00661-9F33-4EFA-83DC-443DAF1F8199}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

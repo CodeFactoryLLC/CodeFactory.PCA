@@ -5,10 +5,10 @@ using System.Text;
 namespace CodeFactory.PCA.Models
 {
     /// <summary>
-    /// Data class that returns a page of data records from a <see cref="PagingRequest"/>.
+    /// Data class that returns a page of data records from a data request.
     /// </summary>
     /// <typeparam name="T">Type of the data records to be returned.</typeparam>
-    public class PageResponse<T> where T : class
+    public class DataResponse<T> where T : class
     {
 
         /// <summary>

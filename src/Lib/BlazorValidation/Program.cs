@@ -1,10 +1,17 @@
+using BlazorValidation;
 using BlazorValidation.Components;
+using CodeFactory.PCA.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddTelerikBlazor();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddScoped<INotificationService>( sp => new  NotificationService() );
+builder.Services.AddScoped<IDialogService>( sp => new DialogService() );
 
 var app = builder.Build();
 

@@ -4,7 +4,7 @@
 <CounterController CheckStopNavigationChange="@PromptToAllowNavigationChangeAsync" @ref="Controller" />
 
 <h1>Counter</h1>
-
+<TelerikButton OnClick="@ShowSuccessNotification">Show Success</TelerikButton>
 <StatusEditForm Model="@_info" DataModifiedStatusChanged="DataModifiedStatusChangedAsync" @ref = "CounterEditForm" >
 <InputText @bind-Value="@_info.FirstName" DisplayName="First Name"/>
 <InputText @bind-Value="@_info.LastName"  DisplayName="Last Name" />
@@ -18,6 +18,9 @@
 
     private InfoTest _info = new InfoTest();
 
+    [Inject]
+    private INotificationService NotificationService { get; set; }
+
 
     private ICounterController Controller { get; set; }
 
@@ -27,6 +30,12 @@
     private async Task PromptToAllowNavigationChangeAsync(NavigationCancelInfo context)
     {
         context.CancelNavigationChange = true;
+    }
+
+    private async Task ShowSuccessNotification(MouseEventArgs args)
+    {
+       await NotificationService.SuccessNotificationAsync("Success Test");
+
     }
 
     private async void IncrementCount()
