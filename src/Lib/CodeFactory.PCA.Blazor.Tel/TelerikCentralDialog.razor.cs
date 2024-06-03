@@ -3,9 +3,15 @@ using Telerik.Blazor;
 
 namespace CodeFactory.PCA.Blazor.Tel
 {
+    /// <summary>
+    /// Dialog manager that is the Telerik dialog implementation that supports <see cref="CentralDialogComponentBase"/>
+    /// </summary>
     public partial class TelerikCentralDialog
     {
 
+        /// <summary>
+        /// Cascading parameter that provides access to the dialog manager from telerik.
+        /// </summary>
         [CascadingParameter]
         public DialogFactory Dialogs { get; set; }
 
@@ -35,6 +41,8 @@ namespace CodeFactory.PCA.Blazor.Tel
             var result = await (Dialogs?.ConfirmAsync(message,title,buttonYesTitle,buttonNoTitle) ?? Task<bool>.FromResult(false));
             return result;
         }
+
+
 
 
     }

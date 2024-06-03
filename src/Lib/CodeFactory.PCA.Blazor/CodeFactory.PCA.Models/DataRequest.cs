@@ -4,6 +4,10 @@ using System.Text;
 
 namespace CodeFactory.PCA.Models
 {
+    /// <summary>
+    /// Data model used in paging and virtual scrolling data requests. 
+    /// </summary>
+    /// <typeparam name="SC">Implements the search criteria fields that will be used for a data request.</typeparam>
     public class DataRequest<SC> where SC : class
     {
         /// <summary>

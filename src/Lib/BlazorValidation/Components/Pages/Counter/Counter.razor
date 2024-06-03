@@ -1,7 +1,7 @@
 ﻿@page "/counter"
 
 <PageTitle>Counter</PageTitle>
-<CounterController CheckStopNavigationChange="@PromptToAllowNavigationChangeAsync" @ref="Controller" />
+<CounterController @ref="Controller"  />
 
 <h1>Counter</h1>
 <TelerikButton OnClick="@ShowSuccessNotification">Show Success</TelerikButton>
@@ -16,22 +16,18 @@
 @code {
     private int currentCount = 0;
 
-    private InfoTest _info = new InfoTest();
+    // private InfoTest _info = new InfoTest();
 
     [Inject]
     private INotificationService NotificationService { get; set; }
 
-
+    private InfoTest _info = new InfoTest();
     private ICounterController Controller { get; set; }
 
 
     private StatusEditForm CounterEditForm { get; set; }
 
-    private async Task PromptToAllowNavigationChangeAsync(NavigationCancelInfo context)
-    {
-        context.CancelNavigationChange = true;
-    }
-
+    
     private async Task ShowSuccessNotification(MouseEventArgs args)
     {
        await NotificationService.SuccessNotificationAsync("Success Test");
@@ -45,14 +41,6 @@
         var result = await Controller.SaveCounterValueAsync(currentCount);
 
         if (result) await CounterEditForm.SetDataUnmodifiedAsync();
-    }
-
-
-    public class InfoTest
-    {
-
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
     }
 
     private async Task DataModifiedStatusChangedAsync(EditFormDataStatus status)

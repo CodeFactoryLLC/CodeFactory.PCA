@@ -7,6 +7,7 @@ namespace CodeFactory.PCA.Models
     /// <summary>
     /// Data class that provides information to retrieve a target page size of data.
     /// </summary>
+    /// <typeparam name="SC">Implements the search criteria fields that will be used for a data request.</typeparam>
     public class PagingDataRequest<SC>: DataRequest<SC> where SC : class
     {
         /// <summary>

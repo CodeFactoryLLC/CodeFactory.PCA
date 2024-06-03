@@ -10,8 +10,7 @@ builder.Services.AddTelerikBlazor();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-builder.Services.AddScoped<INotificationService>( sp => new  NotificationService() );
-builder.Services.AddScoped<IDialogService>( sp => new DialogService() );
+builder.Services.AddPCAServices();
 
 var app = builder.Build();
 

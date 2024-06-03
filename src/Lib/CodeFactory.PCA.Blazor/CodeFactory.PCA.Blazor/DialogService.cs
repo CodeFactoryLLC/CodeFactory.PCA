@@ -23,7 +23,7 @@ namespace CodeFactory.PCA.Blazor
 
         public async Task<bool> RaiseConfirmationAsync(string message, string title, string buttonNoTitle = "No", string buttonYesTitle = "Yes")
         {
-            var result = await (_dialogSubmission?.RaiseConfirmationAsync(message,buttonNoTitle,buttonYesTitle) ?? Task.FromResult<bool>(false));
+            var result = await (_dialogSubmission?.RaiseConfirmationAsync(message,title,buttonNoTitle,buttonYesTitle) ?? Task.FromResult<bool>(false));
 
             return result;
         }
