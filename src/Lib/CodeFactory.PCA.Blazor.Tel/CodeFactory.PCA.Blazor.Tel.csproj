@@ -4,6 +4,26 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Title>CodeFactory PCA Blazor Server Telerik Components</Title>
+    <Version>1.24163.1-Pre</Version>
+    <Authors>CodeFactory, LLC.</Authors>
+    <Company>CodeFactory, LLC.</Company>
+    <Description>Central service blazor components using Telerik controls for PCA for Blazor Server</Description>
+    <Copyright>Copyright 2024 CodeFactory, LLC.</Copyright>
+    <PackageIcon>PCALOGO128.png</PackageIcon>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/CodeFactoryLLC/CodeFactory.PCA/blob/main/Docs/Blazor/Readme.md</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/CodeFactoryLLC/CodeFactory.PCA</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>blazor</PackageTags>
+    <PackageReleaseNotes>Initial release of telerik controls support.</PackageReleaseNotes>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.24163.1</FileVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <IncludeSymbols>False</IncludeSymbols>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
 
@@ -18,6 +38,17 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CodeFactory.PCA.Blazor\CodeFactory.PCA.Blazor\CodeFactory.PCA.Blazor.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Docs\PCALOGO128.png">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+    </None>
+    <None Include="Docs\readme.md">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+    </None>
   </ItemGroup>
 
 </Project>

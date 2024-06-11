@@ -7,19 +7,22 @@
     <OutputType>Library</OutputType>
 	  <IsPackable>true</IsPackable>
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-	  <Title>CodeFactory PCA Pattern for Blazor</Title>
+	  <Title>CodeFactory PCA Pattern for Server Side Blazor</Title>
 	  <Authors>CodeFactory, LLC.</Authors>
-	  <Description>PCA delivery pattern implemented for Blazor.</Description>
+	  <Description>PCA delivery pattern implemented for Server Side Blazor.</Description>
 	  <Copyright>Copyright 2024 CodeFactory, LLC.</Copyright>
 	  <PackageProjectUrl>https://github.com/CodeFactoryLLC/CodeFactory.PCA</PackageProjectUrl>
 	  <RepositoryUrl>https://github.com/CodeFactoryLLC/CodeFactory.PCA</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
 	  <PackageTags>Delivery Patterns;Blazor</PackageTags>
 	  <PackageReleaseNotes>Initial release</PackageReleaseNotes>
-	  <FileVersion>1.0.23353.1</FileVersion>
+	  <FileVersion>1.0.24163.1</FileVersion>
 	  <PackageLicenseExpression> MIT</PackageLicenseExpression>
 	  <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-	  <Version>1.23353.1-Pre</Version>  
+	  <Version>1.24163.1-Pre</Version>
+	  <PackageIcon>PCALOGO128.png</PackageIcon>
+	  <PackageReadmeFile>readme.md</PackageReadmeFile>
+	  <AssemblyVersion>1.0.0.0</AssemblyVersion>  
   </PropertyGroup>
 
 
@@ -29,6 +32,17 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Docs\PCALOGO128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="Docs\readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
