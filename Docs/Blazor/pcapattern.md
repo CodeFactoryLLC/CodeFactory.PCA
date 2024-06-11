@@ -20,6 +20,6 @@ flowchart LR;
 ## Layer Definitions
 The following will take you to the definition of each layer of the PCA pattern. 
 
-- [Presentation Layer](/Docs/Presentation-Layer.md)
-- [Control Layer](/Docs/Control-Layer)
-- [Abstraction Layer](/Docs/Abstraction-Layer)
+- [Presentation Layer](/Presentation-Layer.md)
+- [Control Layer](/Control-Layer.md)
+- [Abstraction Layer](/Abstraction-Layer.md)
