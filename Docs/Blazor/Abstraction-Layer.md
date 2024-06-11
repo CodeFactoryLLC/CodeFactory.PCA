@@ -46,5 +46,5 @@ The abstraction is expected to implement the **IDisposable** interface. The abst
 - Unsubscribe to events.
 - Call Dispose on injected functionality that support IDisposable. 
 
-[Back to PCA Pattern](/pcapattern.md)
+[Back to PCA Pattern](/Docs/Blazor/pcapattern.md)
 
