@@ -16,7 +16,7 @@ namespace CodeFactory.PCA.Blazor
     /// <summary>
     /// Base class that is implemented by all component based controllers.
     /// </summary>
-    public abstract class ControllerBase :ComponentBase, IAsyncDisposable
+    public abstract class ControllerComponentBase :ComponentBase, IAsyncDisposable,IController,IPresentationCallback
     {
         /// <summary>
         /// Java script function name to enable prompting for navigation changes. 
@@ -67,27 +67,85 @@ namespace CodeFactory.PCA.Blazor
         protected NavigationManager NavManager { get; set; } = default!;
 
         /// <summary>
-        /// Parameter that registers a event callback that will be called by the controller to check a navigation change should be stopped.
+        /// Injecting notification service into the controller.
         /// </summary>
-        [Parameter]
-        public EventCallback<NavigationCancelInfo> CheckStopNavigationChange { get; set; }
+        [Inject]
+        private INotificationService NotificationService { get; set; }
+
+        /// <summary>
+        /// Injecting the dialog service into the controller.
+        /// </summary>
+        [Inject]
+        private IDialogService DialogService { get; set; }
+
+
+        /// <summary>
+        /// Service that allows you to raise a notification to the central notification handler.
+        /// </summary>
+        protected INotificationSubmission CentralNotification => NotificationService;
+
+        /// <summary>
+        /// Service that allows you to raise a dialog to the central dialog handler. 
+        /// </summary>
+        protected IDialogSubmission CentralDialog => DialogService;
+
+
+         /// <inheritdoc/>
+        protected override void OnAfterRender(bool firstRender)
+        {
+            try
+            {
+                if (firstRender) InitializeController();
+            }
+            finally
+            {
+                base.OnAfterRender(firstRender);
+            }
+            
+        }
+
+
+        /// <summary>
+        /// Initialization logic for the controller during the first render of the controller.
+        /// </summary>
+        protected virtual void InitializeController()
+        { 
+            //Intentionally blank
+        }
+
+        /// <inheritdoc/>
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+
+                if (firstRender) await InitializeControllerAsync(); 
+
+                await base.OnAfterRenderAsync(firstRender);
+        }
+
+        /// <summary>
+        /// Initialization logic for the controller during the first render of the controller.
+        /// </summary>
+        protected virtual Task InitializeControllerAsync()
+        { 
+            return Task.CompletedTask;
+        }
 
         /// <summary>
         /// Handles the <see cref="NavigationManager.LocationChanged"/> event from the navigation manager.
         /// </summary>
         /// <param name="context">The context of the location that is changing.</param>
-        private async ValueTask OnLocationChanging(LocationChangingContext context)
+        protected virtual async ValueTask OnLocationChanging(LocationChangingContext context)
         {
 
-            if (_promptForNavigationChange & CheckStopNavigationChange.HasDelegate)
+            if (_promptForNavigationChange)
             {
                 var cancelInfo = new NavigationCancelInfo();
 
                 cancelInfo.PromptMessage = _promptMessage;
 
-                await CheckStopNavigationChange.InvokeAsync(cancelInfo);
+                var stayOnPage = await CentralDialog.RaiseConfirmationAsync(_promptMessage, "Sure you want to leave?", "Leave Page", "Stay");
 
-                if (cancelInfo.CancelNavigationChange) context.PreventNavigation();
+                if (stayOnPage) context.PreventNavigation();
             }
         }
 
@@ -96,7 +154,7 @@ namespace CodeFactory.PCA.Blazor
         /// </summary>
         private async Task SubscribeToNotificationsAsync()
         {
-             _locationChangeSubscription  ??= NavManager.RegisterLocationChangingHandler(OnLocationChanging);
+             _locationChangeSubscription = NavManager.RegisterLocationChangingHandler(OnLocationChanging);
 
             await JSRuntime.InvokeVoidAsync(JavaScriptEnableNavigationPrompt, _controllerId);
         }
@@ -106,10 +164,12 @@ namespace CodeFactory.PCA.Blazor
         /// </summary>
         private async Task ReleaseNotificationsAsync()
         {
-            _locationChangeSubscription?.Dispose();
+            
 
             try
             {
+                _locationChangeSubscription?.Dispose();
+                _locationChangeSubscription = null;
                 await JSRuntime.InvokeVoidAsync(JavaScriptDisableNavigationPrompt, _controllerId);
             }
             catch (JSException)
@@ -127,7 +187,7 @@ namespace CodeFactory.PCA.Blazor
         {
            
             await ReleaseNotificationsAsync();
-             
+
         }
 
         /// <summary>

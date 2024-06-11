@@ -1,0 +1,15 @@
+﻿@inherits CentralNotificationComponentBase
+<TelerikNotification @ref="NotificationReference" 
+    Class ="@( SetClass())" 
+    AnimationType ="@( SetAnimationType())" 
+    VerticalPosition="@( SetVerticalPosition() )" 
+    HorizontalPosition="@( SetHorizonalPosition())"/>
+<style>
+    .pca-central-telerik-notification .k-notification-container .k-notification {
+        text-align: center;
+        align-items: center;
+        min-width: 500px;
+        min-height:32px;
+        z-index: 654321;
+    }
+</style>

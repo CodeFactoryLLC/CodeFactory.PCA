@@ -10,7 +10,7 @@
 	  <Title>CodeFactory PCA Pattern for Blazor</Title>
 	  <Authors>CodeFactory, LLC.</Authors>
 	  <Description>PCA delivery pattern implemented for Blazor.</Description>
-	  <Copyright>Copyright 2023 CodeFactory, LLC.</Copyright>
+	  <Copyright>Copyright 2024 CodeFactory, LLC.</Copyright>
 	  <PackageProjectUrl>https://github.com/CodeFactoryLLC/CodeFactory.PCA</PackageProjectUrl>
 	  <RepositoryUrl>https://github.com/CodeFactoryLLC/CodeFactory.PCA</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>

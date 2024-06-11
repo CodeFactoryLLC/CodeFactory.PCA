@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -6,14 +6,18 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+
   <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.5" />
     <PackageReference Include="Telerik.UI.for.Blazor" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CodeFactory.PCA.Blazor.Tel\CodeFactory.PCA.Blazor.Tel.csproj" />
     <ProjectReference Include="..\CodeFactory.PCA.Blazor\CodeFactory.PCA.Blazor\CodeFactory.PCA.Blazor.csproj" />
-    <ProjectReference Include="..\CodeFactory.PCA.Blazor\CodeFactory.PCA.Models\CodeFactory.PCA.Models.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<TemplateData>
+		<Name>Presentation Control</Name>
+		<Description>Creates the presentation and controller.</Description>
+		<Icon Package="{AAB75614-2F8F-4DA6-B0A6-763C6DBB2969}" ID="13"/>
+		<TemplateID>12DDA897-1D7E-4D2F-9CEF-B71C84F7E80D</TemplateID>
+		<ProjectType>PCA for Blazor</ProjectType>
+		<SortOrder>98</SortOrder>
+		<RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
+		<NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+		<DefaultName>Presentation.razor</DefaultName>
+		<AppliesTo>DotNetCoreRazor</AppliesTo>
+		<ShowByDefault>true</ShowByDefault>
+		<AppIdFilter>blend</AppIdFilter>
+	</TemplateData>
+	<TemplateContent>
+		<References>
+			<Reference>
+				<Assembly>System</Assembly>
+			</Reference>
+		</References>
+		<ProjectItem ReplaceParameters="true" >Presentation.razor</ProjectItem>
+		<ProjectItem ReplaceParameters="true" SubType="Code" TargetFileName="$fileinputname$.razor.cs">Presentation.razor.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$Controller.razor" >PresentationController.razor</ProjectItem>
+		<ProjectItem ReplaceParameters="true" SubType="Code" TargetFileName="$fileinputname$Controller.razor.cs">PresentationController.razor.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="I$fileinputname$Controller.cs">IPresentationController.cs</ProjectItem>
+		<CustomParameters>
+			<CustomParameter Name="$controllername$" Value="$fileinputname$Controller"/>
+		</CustomParameters>
+	</TemplateContent>
+</VSTemplate>

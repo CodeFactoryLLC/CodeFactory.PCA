@@ -1,10 +1,10 @@
 ﻿@page "/counter"
 
 <PageTitle>Counter</PageTitle>
-<CounterController CheckStopNavigationChange="@PromptToAllowNavigationChangeAsync" @ref="Controller" />
+<CounterController @ref="Controller"  />
 
 <h1>Counter</h1>
-
+<TelerikButton OnClick="@ShowSuccessNotification">Show Success</TelerikButton>
 <StatusEditForm Model="@_info" DataModifiedStatusChanged="DataModifiedStatusChangedAsync" @ref = "CounterEditForm" >
 <InputText @bind-Value="@_info.FirstName" DisplayName="First Name"/>
 <InputText @bind-Value="@_info.LastName"  DisplayName="Last Name" />
@@ -16,17 +16,22 @@
 @code {
     private int currentCount = 0;
 
+    // private InfoTest _info = new InfoTest();
+
+    [Inject]
+    private INotificationService NotificationService { get; set; }
+
     private InfoTest _info = new InfoTest();
-
-
     private ICounterController Controller { get; set; }
 
 
     private StatusEditForm CounterEditForm { get; set; }
 
-    private async Task PromptToAllowNavigationChangeAsync(NavigationCancelInfo context)
+
+    private async Task ShowSuccessNotification(MouseEventArgs args)
     {
-        context.CancelNavigationChange = true;
+        await NotificationService.SuccessNotificationAsync("Success Test");
+       
     }
 
     private async void IncrementCount()
@@ -36,14 +41,6 @@
         var result = await Controller.SaveCounterValueAsync(currentCount);
 
         if (result) await CounterEditForm.SetDataUnmodifiedAsync();
-    }
-
-
-    public class InfoTest
-    {
-
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
     }
 
     private async Task DataModifiedStatusChangedAsync(EditFormDataStatus status)
