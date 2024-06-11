@@ -5,8 +5,6 @@ VisualStudioVersion = 17.9.34310.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFactory.PCA.Blazor", "..\..\Lib\CodeFactory.PCA.Blazor\CodeFactory.PCA.Blazor\CodeFactory.PCA.Blazor.csproj", "{BE2F62EB-EFBF-4FD0-B652-34EA245C4A6F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFactory.PCA.Models", "..\..\Lib\CodeFactory.PCA.Blazor\CodeFactory.PCA.Models\CodeFactory.PCA.Models.csproj", "{E58F3F5E-0F65-419A-A54B-DE50287C15A6}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorValidation", "..\..\Lib\BlazorValidation\BlazorValidation.csproj", "{433DB029-F480-47AE-B012-23A271C9605C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFactory.PCA.Blazor.Tel", "..\..\Lib\CodeFactory.PCA.Blazor.Tel\CodeFactory.PCA.Blazor.Tel.csproj", "{FBC00661-9F33-4EFA-83DC-443DAF1F8199}"
@@ -37,18 +35,6 @@ Global
 		{BE2F62EB-EFBF-4FD0-B652-34EA245C4A6F}.Release|arm64.Build.0 = Release|Any CPU
 		{BE2F62EB-EFBF-4FD0-B652-34EA245C4A6F}.Release|x86.ActiveCfg = Release|Any CPU
 		{BE2F62EB-EFBF-4FD0-B652-34EA245C4A6F}.Release|x86.Build.0 = Release|Any CPU
-		{E58F3F5E-0F65-419A-A54B-DE50287C15A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E58F3F5E-0F65-419A-A54B-DE50287C15A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E58F3F5E-0F65-419A-A54B-DE50287C15A6}.Debug|arm64.ActiveCfg = Debug|Any CPU
-		{E58F3F5E-0F65-419A-A54B-DE50287C15A6}.Debug|arm64.Build.0 = Debug|Any CPU
-		{E58F3F5E-0F65-419A-A54B-DE50287C15A6}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E58F3F5E-0F65-419A-A54B-DE50287C15A6}.Debug|x86.Build.0 = Debug|Any CPU
-		{E58F3F5E-0F65-419A-A54B-DE50287C15A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E58F3F5E-0F65-419A-A54B-DE50287C15A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E58F3F5E-0F65-419A-A54B-DE50287C15A6}.Release|arm64.ActiveCfg = Release|Any CPU
-		{E58F3F5E-0F65-419A-A54B-DE50287C15A6}.Release|arm64.Build.0 = Release|Any CPU
-		{E58F3F5E-0F65-419A-A54B-DE50287C15A6}.Release|x86.ActiveCfg = Release|Any CPU
-		{E58F3F5E-0F65-419A-A54B-DE50287C15A6}.Release|x86.Build.0 = Release|Any CPU
 		{433DB029-F480-47AE-B012-23A271C9605C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{433DB029-F480-47AE-B012-23A271C9605C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{433DB029-F480-47AE-B012-23A271C9605C}.Debug|arm64.ActiveCfg = Debug|Any CPU
