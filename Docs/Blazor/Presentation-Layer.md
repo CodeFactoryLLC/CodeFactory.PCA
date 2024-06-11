@@ -64,7 +64,9 @@ If data needs to be persisted beyond the life of a single usage of the presentat
 # Event Management
 The presentation is responsible for handling all events that are from html, java script, and components subscribed to on the presentation. There should be no direct subscription to presentation events from the controller.  
 
-[Back to PCA Pattern](/pcapattern.md)
+[Back to PCA Pattern](/Docs/Blazor/pcapattern.md)
+
+
 
 
 
