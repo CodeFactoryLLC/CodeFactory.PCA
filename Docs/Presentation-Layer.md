@@ -36,11 +36,11 @@ The presentation and controller implementations two one-way patterns to communic
 ### Presentation to Controller Communications.
 When the presentation needs data or actions to occur it calls the controller to perform the target needed functionality. This is done by calling a target method defined in the interface assigned to the controller component implementation. 
 
-::: mermaid
+```mermaid
 flowchart LR;
     P[Presentation] -- Interface Async Method Call --> C[Control]
 
-:::
+```
 
 
 ### Controller to Presentation Communications.

@@ -79,6 +79,8 @@ The controller is responsible for handling any events that it has subscribed to.
 # Controller Disposal 
 The controller is expected to implement the **IDisposable** interface. The controller is responsible for the cleanup of its functionality. The following are common cleanup tasks for a controller.
 - Unsubscribe to events.
-- Call Dispose on injected functionality that support IDisposable. 
+- Call Dispose on injected functionality that support IDisposable.
+
+[Back to PCA Pattern](/Docs/pcapattern.md)
 
 
