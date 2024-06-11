@@ -53,7 +53,7 @@ flowchart LR;
 ```
 
 # Data Management
-During the executions of the PCA functionality the data that is used is stored on the presentation itself. 
+During the executions of the PCA functionality the data that is used is stored either on the presentation itself or managed from the controller using data binding. Both approaches can be used with data management. 
 
 ## Instance data
 The data that is used in the execution of the presentation is always stored as private scoped properties on the presentation. 
