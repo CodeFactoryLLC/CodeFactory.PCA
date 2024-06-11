@@ -20,6 +20,8 @@ flowchart LR;
 ## Layer Definitions
 The following will take you to the definition of each layer of the PCA pattern. 
 
-- [Presentation Layer](/Presentation-Layer.md)
-- [Control Layer](/Control-Layer.md)
-- [Abstraction Layer](/Abstraction-Layer.md)
+- [Presentation Layer](/Docs/Blazor/Presentation-Layer.md)
+- [Control Layer](/Docs/Blazor/Control-Layer.md)
+- [Abstraction Layer](/Docs/Blazor/Abstraction-Layer.md)
+  
+  [Return to PCA for Server Side Blazor](/Docs/Blazor/Readme.md)
