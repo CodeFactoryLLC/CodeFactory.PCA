@@ -45,4 +45,4 @@ Bellow is a code example of the components implemented in a layout. The componen
 </TelerikRootComponent>
 ```
 
-[Return to Blazor Server for PCA](/Readme.md)
+[Return to PCA for Server Side Blazor](/Docs/Blazor/Readme.md)
