@@ -1,4 +1,5 @@
 ﻿using CodeFactory.PCA.Blazor;
+using Microsoft.Extensions.Logging;
 
 namespace BlazorValidation.Components.Pages.Counter
 {
@@ -11,9 +12,5 @@ namespace BlazorValidation.Components.Pages.Counter
             return Task.FromResult(true);
         }
 
-        private void test()
-        {
-
-        }
     }
 }

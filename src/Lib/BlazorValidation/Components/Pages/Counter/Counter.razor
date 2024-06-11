@@ -27,11 +27,11 @@
 
     private StatusEditForm CounterEditForm { get; set; }
 
-    
+
     private async Task ShowSuccessNotification(MouseEventArgs args)
     {
-       await NotificationService.SuccessNotificationAsync("Success Test");
-
+        await NotificationService.SuccessNotificationAsync("Success Test");
+       
     }
 
     private async void IncrementCount()
