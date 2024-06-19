@@ -16,10 +16,10 @@
 	  <RepositoryType>git</RepositoryType>
 	  <PackageTags>Delivery Patterns;Blazor</PackageTags>
 	  <PackageReleaseNotes>Initial release</PackageReleaseNotes>
-	  <FileVersion>1.0.24163.1</FileVersion>
+	  <FileVersion>1.0.24171.1</FileVersion>
 	  <PackageLicenseExpression> MIT</PackageLicenseExpression>
 	  <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-	  <Version>1.24163.1-Pre</Version>
+	  <Version>1.24171.1-Pre</Version>
 	  <PackageIcon>PCALOGO128.png</PackageIcon>
 	  <PackageReadmeFile>readme.md</PackageReadmeFile>
 	  <AssemblyVersion>1.0.0.0</AssemblyVersion>  
