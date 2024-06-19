@@ -11,13 +11,13 @@ namespace CodeFactory.PCA.Blazor
         /// Injecting notification service into the controller.
         /// </summary>
         [Inject]
-        private NotificationService NotificationService { get; set; }
+        private INotificationService NotificationService { get; set; }
 
         /// <summary>
         /// Injecting the dialog service into the controller.
         /// </summary>
         [Inject]
-        private DialogService DialogService { get; set; }
+        private IDialogService DialogService { get; set; }
 
         /// <summary>
         /// Service that allows you to raise a notification to the central notification handler.

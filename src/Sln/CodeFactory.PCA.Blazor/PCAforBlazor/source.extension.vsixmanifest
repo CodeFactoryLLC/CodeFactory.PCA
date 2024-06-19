@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="PCAforBlazor.0ca69de9-75ab-4d38-952c-17421e963f2e" Version="1.24163.1" Language="en-US" Publisher="CodeFactory, LLC." />
+        <Identity Id="PCAforBlazor.0ca69de9-75ab-4d38-952c-17421e963f2e" Version="1.24171.1" Language="en-US" Publisher="CodeFactory LLC" />
         <DisplayName>CodeFactory PCA for Blazor</DisplayName>
         <Description xml:space="preserve">Visual Studio item templates that support the CodeFactory for Presentation Control and Abstraction pattern for Blazor. </Description>
         <MoreInfo>https://github.com/CodeFactoryLLC/CodeFactory.PCA/blob/main/Docs/Blazor/Readme.md</MoreInfo>

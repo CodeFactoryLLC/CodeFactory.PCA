@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <Title>CodeFactory PCA Blazor Server Telerik Components</Title>
-    <Version>1.24163.1-Pre</Version>
+    <Version>1.24171.1-Pre</Version>
     <Authors>CodeFactory, LLC.</Authors>
     <Company>CodeFactory, LLC.</Company>
     <Description>Central service blazor components using Telerik controls for PCA for Blazor Server</Description>
@@ -18,7 +18,7 @@
     <PackageTags>blazor</PackageTags>
     <PackageReleaseNotes>Initial release of telerik controls support.</PackageReleaseNotes>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.24163.1</FileVersion>
+    <FileVersion>1.0.24171.1</FileVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <IncludeSymbols>False</IncludeSymbols>
